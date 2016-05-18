@@ -1,0 +1,37 @@
+{
+  "name": "monitaur",
+  "version": "1.0.0",
+  "description": "Monitor social activity.",
+  "main": "index.js",
+  "scripts": {
+    "production": "webpack -p",
+    "start": "webpack-dev-server"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "social"
+  ],
+  "author": "Justin Seiter",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.11.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-router": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-react": "^5.1.1",
+    "html-webpack-plugin": "^2.17.0",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
