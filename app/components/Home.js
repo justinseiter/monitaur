@@ -1,11 +1,24 @@
 import React from 'react';
 
-var Home = React.createClass({
-  render: function(){
-    return(
-      <h2>Our Home Component</h2>
-    )
-  }
-})
+function Home() {
+  return (
+    <div>
+      <div className="columns">
+        <div className="column">
+          First column
+        </div>
+        <div className="column">
+          Second column
+        </div>
+        <div className="column">
+          Third column
+        </div>
+        <div className="column">
+          Fourth column
+        </div>
+      </div>
+    </div>
+  );
+}
 
 module.exports = Home;
