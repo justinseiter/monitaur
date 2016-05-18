@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-function Main(props) {
+const Main = ({ children }) => {
   return (
     <div>
       <nav className="nav">
@@ -25,13 +25,13 @@ function Main(props) {
           </a>
         </div>
       </nav>
-      {props.children}
+      {children}
     </div>
   );
-}
+};
 
 Main.propTypes = {
   children: PropTypes.object,
 };
 
-module.exports = Main;
+export default Main;

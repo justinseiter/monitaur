@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Home() {
+const Home = () => {
   return (
-    <div>
+    <div className="container is-fluid">
       <div className="columns">
-        <div className="column">
+        <div className="column is-success">
           First column
         </div>
         <div className="column">
@@ -19,6 +19,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
-module.exports = Home;
+export default Home;
