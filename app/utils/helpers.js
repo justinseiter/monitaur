@@ -1,35 +1,45 @@
+import React from 'react';
 import axios from 'axios';
 import _ from 'underscore';
 
-function getActivity() {
-  return axios.get('https://nuvi-challenge.herokuapp.com/activities')
-  .then((response) => {
-    // Organize response by provider (ie, Twitter, Facebook, Instagram, etc)
-    const byProvider = _.chain(response.data).groupBy('provider').value();
+const helpers = {
+  dump: (obj) => {
+    return <pre>{JSON.stringify(obj, null, ' ')}</pre>;
+  },
+  getActivity: () => {
+    return axios.get('https://nuvi-challenge.herokuapp.com/activities')
+    .then((response) => {
+      // Organize response by provider (ie, Twitter, Facebook, Instagram, etc)
+      const byProvider = _.chain(response.data).groupBy('provider').value();
 
-    // Loop through response to extract totals for likes, shares, and comments.
-    return _.mapObject(byProvider, (item) => {
-      const provider = {};
-      provider.activity = [];
-      provider.stats = {};
-      provider.stats.likes = 0;
-      provider.stats.shares = 0;
-      provider.stats.comments = 0;
-      provider.stats.sentiment = 0;
+      // Loop through response to extract totals for likes, shares, and comments.
+      const providers = _.mapObject(byProvider, (item, it) => {
+        const provider = {
+          name: it,
+          activity: [],
+          stats: {
+            likes: 0,
+            shares: 0,
+            comments: 0,
+            sentiment: 0,
+          },
+        };
 
-      _.each(item, (act) => {
-        provider.stats.likes += act.activity_likes;
-        provider.stats.shares += act.activity_shares;
-        provider.stats.comments += act.activity_comments;
-        provider.stats.sentiment += act.activity_sentiment;
-        provider.activity.push(act);
+        _.each(item, (act) => {
+          provider.stats.likes += act.activity_likes;
+          provider.stats.shares += act.activity_shares;
+          provider.stats.comments += act.activity_comments;
+          provider.stats.sentiment += act.activity_sentiment;
+          provider.activity.push(act);
+        });
+        return provider;
       });
-      return provider;
+      return _.toArray(providers);
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+  },
+};
 
-export default getActivity;
+export default helpers;

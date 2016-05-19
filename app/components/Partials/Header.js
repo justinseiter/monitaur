@@ -19,7 +19,7 @@ const Header = () => {
 
         <div className="nav-right nav-menu">
           <a className="nav-item" href="#">
-            Documentation
+            Docs
           </a>
           <a className="nav-item" href="#">
             Support
