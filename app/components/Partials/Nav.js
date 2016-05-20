@@ -2,9 +2,23 @@ import React from 'react';
 
 const Nav = ({ providers }) => {
   return (
-    <div className="container">
-      <div className="tabs is-centered">
-        <ul>
+    <div className="column is-narrow sidebar">
+      <aside className="menu">
+        <p className="menu-label">
+          General
+        </p>
+        <ul className="menu-list">
+          <li>
+            <a className="is-active" href="#">
+              <span className="icon is-small"><i className="fa fa-dashboard"></i></span>
+              Dashboard
+            </a>
+          </li>
+        </ul>
+        <p className="menu-label">
+          Providers
+        </p>
+        <ul className="menu-list">
           {providers.map((provider, index) => (
             <li key={index}>
               <a>
@@ -14,7 +28,15 @@ const Nav = ({ providers }) => {
             </li>
           ))}
         </ul>
-      </div>
+        <p className="menu-label">
+            Administration
+          </p>
+          <ul className="menu-list">
+            <li><a href="#">Team Settings</a></li>
+            <li><a href="#">Invitations</a></li>
+            <li><a href="#">Authentication</a></li>
+          </ul>
+      </aside>
     </div>
   );
 };
