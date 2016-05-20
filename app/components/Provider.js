@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 import helpers from '../utils/helpers';
+import moment from 'moment';
 
 _.mixin({
   capitalize: (string) => {
@@ -9,27 +10,9 @@ _.mixin({
 });
 
 function singleProvider(ary, name) {
-  return _.where(ary, { name: name });
+  const sp = _.where(ary, { name: name });
+  return _.chain(sp[0].activity).sortBy('activity_date').reverse().value();
 }
-
-    // "id": "6323777844",
-    // "actor_username": "lon_kilback",
-    // "actor_description": "Upgradable zero administration orchestration",
-    // "actor_name": "Hugh Ortiz",
-    // "actor_avator": "https://robohash.org/lon_kilback.png?size=300x300&set=set1",
-    // "actor_url": "https://tumblr.com/lon_kilback",
-    // "provider": "tumblr",
-    // "activity_url": "https://tumblr.com/lon_kilback/6323777844",
-    // "activity_latitude": "2.22062170615294",
-    // "activity_longitude": "62.294246238912166",
-    // "activity_date": "2016-05-15",
-    // "activity_message": "Numquam vulticulus turpis atqui.",
-    // "activity_likes": 45,
-    // "activity_shares": 20,
-    // "activity_comments": 1,
-    // "activity_attachment": null,
-    // "activity_attachment_type": null,
-    // "activity_sentiment": 0
 
 function Provider(props) {
   const prov = singleProvider(props.providers, props.params.name);
@@ -45,6 +28,7 @@ function Provider(props) {
             <th></th>
             <th>Name</th>
             <th>Message</th>
+            <th>Date</th>
             <th>
               <span className="icon is-small">
                 <i className="fa fa-heart-o"></i>
@@ -63,7 +47,7 @@ function Provider(props) {
           </tr>
         </thead>
         <tbody>
-          {prov[0].activity.map((act, index) => (
+          {prov.map((act, index) => (
             <tr key={index}>
               <td>
                 <figure className="image is-16x16">
@@ -71,7 +55,13 @@ function Provider(props) {
                 </figure>
               </td>
               <td>{act.actor_name}</td>
-              <td>{act.activity_message}</td>
+              <td>
+                {act.activity_attachment
+                  ? <span className="tag is-info is-small">Has Attachment</span>
+                  : <span>{act.activity_message}</span>
+                }
+              </td>
+              <td className="date">{moment(act.activity_date).format('MMM Do')}</td>
               <td className="has-text-right">{act.activity_likes}</td>
               <td className="has-text-right">{act.activity_shares}</td>
               <td className="has-text-right">{act.activity_comments}</td>

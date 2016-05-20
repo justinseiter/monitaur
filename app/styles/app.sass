@@ -19,24 +19,34 @@ $family-primary: $family-sans
 
 .table
   color: inherit
+  .date
+    white-space: nowrap
   .icon
     float: right
     position: relative
     top: 2px
+  .attachment
+    border: 1px solid $border
+
+table.breakdown
+  th, td 
+    text-align: center
+  .name
+    text-align: left
 
 .sidebar 
   width: 200px
   padding-right: 2em
 
 .nav
-  min-height: 60px
+  min-height: 70px
   margin-bottom: 2em
   border-bottom: 1px solid $border
 
 .scoreboard
   margin-bottom: 3em !important
-  padding-bottom: 0.5em
-  padding-top: 0.5em
+  padding-bottom: 1em
+  padding-top: 1em
   border-top: 1px solid $border
   border-bottom: 1px solid $border
   margin-left: -20px

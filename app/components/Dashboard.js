@@ -29,31 +29,31 @@ function pieChartData(ary) {
   return res;
 }
 
+function getProviderTotals(ary) {
+  const sum = {
+    likes: 0,
+    comments: 0,
+    shares: 0,
+    sentiment: 0,
+  };
+  const totals = _.pluck(ary, 'stats');
+  _.each(totals, (item) => {
+    sum.likes += item.likes;
+    sum.comments += item.comments;
+    sum.shares += item.shares;
+    sum.sentiment += item.sentiment;
+  });
+  if (sum.sentiment === 0) {
+    sum.sentiment = 'meh';
+  } else if (sum.sentiment > 0) {
+    sum.sentiment = 'smile';
+  } else {
+    sum.sentiment = 'frown';
+  }
+  return sum;
+}
 
 function Dashboard(props) {
-  function getProviderTotals(ary) {
-    const sum = {
-      likes: 0,
-      comments: 0,
-      shares: 0,
-      sentiment: 0,
-    };
-    const totals = _.pluck(ary, 'stats');
-    _.each(totals, (item) => {
-      sum.likes += item.likes;
-      sum.comments += item.comments;
-      sum.shares += item.shares;
-      sum.sentiment += item.sentiment;
-    });
-    if (sum.sentiment === 0) {
-      sum.sentiment = 'meh';
-    } else if (sum.sentiment > 0) {
-      sum.sentiment = 'smile';
-    } else {
-      sum.sentiment = 'frown';
-    }
-    return sum;
-  }
   const providerActivity = getProviderTotals(props.providers);
   return (
     <div>
@@ -83,7 +83,64 @@ function Dashboard(props) {
           </p>
         </div>
       </nav>
-      <PolarArea data={pieChartData(props.providers)} redraw width="300" height="300" />
+      <div className="columns">
+        <div className="column is-narrow">
+          <PolarArea data={pieChartData(props.providers)} redraw width="340" height="340" />
+          <p className="has-text-centered">
+            <br />
+            <span className="tag">Posts Per Provider</span>
+          </p>
+        </div>
+        <div className="column">
+          <h3 className="title is-5">Provider Breakdown</h3>
+          <table className="table breakdown">
+            <thead>
+              <tr>
+                <th></th>
+                <th className="name">Provider</th>
+                <th>Posts</th>
+                <th>Likes</th>
+                <th>Shares</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span className="icon is-small"><i className="fa fa-facebook"></i></span></td>
+                <td className="name">Facebook</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td><span className="icon is-small"><i className="fa fa-twitter"></i></span></td>
+                <td className="name">Twitter</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td><span className="icon is-small"><i className="fa fa-instagram"></i></span></td>
+                <td className="name">Instagram</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td><span className="icon is-small"><i className="fa fa-tumblr"></i></span></td>
+                <td className="name">Tumblr</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }
