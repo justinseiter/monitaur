@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-const Nav = ({ providers }) => {
+function Nav({providers}) {
   return (
     <div className="column is-narrow sidebar">
       <aside className="menu">
@@ -9,10 +10,10 @@ const Nav = ({ providers }) => {
         </p>
         <ul className="menu-list">
           <li>
-            <a className="is-active" href="#">
+            <Link to="/">
               <span className="icon is-small"><i className="fa fa-dashboard"></i></span>
               Dashboard
-            </a>
+            </Link>
           </li>
         </ul>
         <p className="menu-label">
@@ -21,10 +22,10 @@ const Nav = ({ providers }) => {
         <ul className="menu-list">
           {providers.map((provider, index) => (
             <li key={index}>
-              <a>
+              <Link to={`/provider/${provider}`}>
                 <span className="icon is-small"><i className={`fa fa-${provider}`}></i></span>
                 <span>{provider}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -39,7 +40,7 @@ const Nav = ({ providers }) => {
       </aside>
     </div>
   );
-};
+}
 
 Nav.propTypes = {
   providers: React.PropTypes.array.isRequired,
