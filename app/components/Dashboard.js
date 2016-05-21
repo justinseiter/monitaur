@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 import helpers from '../utils/helpers';
 import { PolarArea } from 'react-chartjs';
+import numeral from 'numeral';
 
 function Dashboard(props) {
   const providerActivity = helpers.getProviderTotals(props.providers);
@@ -13,15 +15,15 @@ function Dashboard(props) {
       <nav className="level scoreboard">
         <div className="level-item has-text-centered">
           <p className="heading">Likes</p>
-          <p className="title">{providerActivity.likes}</p>
+          <p className="title">{numeral(providerActivity.likes).format('0,0')}</p>
         </div>
         <div className="level-item has-text-centered">
           <p className="heading">Shares</p>
-          <p className="title">{providerActivity.shares}</p>
+          <p className="title">{numeral(providerActivity.shares).format('0,0')}</p>
         </div>
         <div className="level-item has-text-centered">
           <p className="heading">Comments</p>
-          <p className="title">{providerActivity.comments}</p>
+          <p className="title">{numeral(providerActivity.comments).format('0,0')}</p>
         </div>
         <div className="level-item has-text-centered">
           <p className="heading">Sentiment</p>
@@ -56,7 +58,7 @@ function Dashboard(props) {
             <tbody>
               <tr>
                 <td><span className="icon is-small"><i className="fa fa-facebook"></i></span></td>
-                <td className="name">Facebook</td>
+                <td className="name"><Link to="/provider/facebook">Facebook</Link></td>
                 <td>23</td>
                 <td>23</td>
                 <td>23</td>

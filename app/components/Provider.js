@@ -49,7 +49,10 @@ function Provider(props) {
               <td>{act.actor_name}</td>
               <td>
                 {act.activity_attachment
-                  ? <span className="tag is-info is-small">Has Attachment</span>
+                  ? <span>
+                      <span className="icon"><i className="fa fa-image"></i></span>
+                      <small>&nbsp;{act.activity_attachment_type}</small>
+                    </span>
                   : <span>{act.activity_message}</span>
                 }
               </td>
