@@ -25,12 +25,18 @@ const helpers = {
   // Get and rework data for chart.js Pie chart
   pieChartData: (ary) => {
     const res = [];
+    const providerColors = {
+      twitter: '#36A2EB',
+      instagram: '#FF6384',
+      tumblr: '#949FB1',
+      facebook: '#2b81bc',
+    }
     ary.forEach((item) => {
       res.push(
         {
           value: item.activity.length,
-          color: '#949FB1',
-          highlight: '#A8B3C5',
+          color: providerColors[item.name],
+          highlight: '#fce473',
           label: helpers.capitalize(item.name),
         }
       );
