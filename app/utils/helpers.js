@@ -6,6 +6,54 @@ const helpers = {
   dump: (obj) => {
     return <pre>{JSON.stringify(obj, null, ' ')}</pre>;
   },
+  capitalize: (string) => {
+    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+  },
+  providersList: (ary) => {
+    // Get just the provider names.
+    return _.pluck(ary, 'name');
+  },
+  singleProvider: (ary, name) => {
+    const sp = _.where(ary, { name: name });
+    return _.chain(sp[0].activity).sortBy('activity_date').reverse().value();
+  },
+  pieChartData: (ary) => {
+    const res = [];
+    ary.forEach((item) => {
+      res.push(
+        {
+          value: item.activity.length,
+          color: '#949FB1',
+          highlight: '#A8B3C5',
+          label: helpers.capitalize(item.name),
+        }
+      );
+    });
+    return res;
+  },
+  getProviderTotals: (ary) => {
+    const sum = {
+      likes: 0,
+      comments: 0,
+      shares: 0,
+      sentiment: 0,
+    };
+    const totals = _.pluck(ary, 'stats');
+    _.each(totals, (item) => {
+      sum.likes += item.likes;
+      sum.comments += item.comments;
+      sum.shares += item.shares;
+      sum.sentiment += item.sentiment;
+    });
+    if (sum.sentiment === 0) {
+      sum.sentiment = 'meh';
+    } else if (sum.sentiment > 0) {
+      sum.sentiment = 'smile';
+    } else {
+      sum.sentiment = 'frown';
+    }
+    return sum;
+  },
   getActivity: () => {
     return axios.get('https://nuvi-challenge.herokuapp.com/activities')
     .then((response) => {

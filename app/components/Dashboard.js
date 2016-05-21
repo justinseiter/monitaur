@@ -1,60 +1,9 @@
-import React, { PropTypes } from 'react';
-import Nav from './Partials/Nav';
-import _ from 'underscore';
+import React from 'react';
+import helpers from '../utils/helpers';
 import { PolarArea } from 'react-chartjs';
 
-_.mixin({
-  capitalize: function(string) {
-    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
-  }
-});
-
-function providersList(ary) {
-  // Get just the provider names.
-  return _.pluck(ary, 'name');
-}
-
-function pieChartData(ary) {
-  const res = [];
-  ary.forEach((item) => {
-    res.push(
-      {
-        value: item.activity.length,
-        color: '#949FB1',
-        highlight: '#A8B3C5',
-        label: _(item.name).capitalize(),
-      }
-    );
-  });
-  return res;
-}
-
-function getProviderTotals(ary) {
-  const sum = {
-    likes: 0,
-    comments: 0,
-    shares: 0,
-    sentiment: 0,
-  };
-  const totals = _.pluck(ary, 'stats');
-  _.each(totals, (item) => {
-    sum.likes += item.likes;
-    sum.comments += item.comments;
-    sum.shares += item.shares;
-    sum.sentiment += item.sentiment;
-  });
-  if (sum.sentiment === 0) {
-    sum.sentiment = 'meh';
-  } else if (sum.sentiment > 0) {
-    sum.sentiment = 'smile';
-  } else {
-    sum.sentiment = 'frown';
-  }
-  return sum;
-}
-
 function Dashboard(props) {
-  const providerActivity = getProviderTotals(props.providers);
+  const providerActivity = helpers.getProviderTotals(props.providers);
   return (
     <div>
       <div className="page-heading">
@@ -85,7 +34,7 @@ function Dashboard(props) {
       </nav>
       <div className="columns">
         <div className="column is-narrow">
-          <PolarArea data={pieChartData(props.providers)} redraw width="340" height="340" />
+          <PolarArea data={helpers.pieChartData(props.providers)} redraw width="340" height="340" />
           <p className="has-text-centered">
             <br />
             <span className="tag">Posts Per Provider</span>
@@ -142,7 +91,11 @@ function Dashboard(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
+
+Dashboard.propTypes = {
+  providers: React.PropTypes.array,
+};
 
 export default Dashboard;

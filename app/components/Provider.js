@@ -1,26 +1,18 @@
 import React from 'react';
-import _ from 'underscore';
 import helpers from '../utils/helpers';
 import moment from 'moment';
 
-_.mixin({
-  capitalize: (string) => {
-    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
-  },
-});
-
-function singleProvider(ary, name) {
-  const sp = _.where(ary, { name: name });
-  return _.chain(sp[0].activity).sortBy('activity_date').reverse().value();
-}
-
 function Provider(props) {
-  const prov = singleProvider(props.providers, props.params.name);
+  const prov = helpers.singleProvider(props.providers, props.params.name);
   return (
     <div className="Provider">
       <div className="page-heading">
-        <p className="title is-3">{_(props.params.name).capitalize()}</p>
-        <p className="subtitle is-5">{_(props.params.name).capitalize()} Overview &amp; Stats</p>
+        <p className="title is-3">
+          {helpers.capitalize(props.params.name)}
+        </p>
+        <p className="subtitle is-5">
+          {helpers.capitalize(props.params.name)} Overview &amp; Stats
+        </p>
       </div>
       <table className="table is-striped">
         <thead>
@@ -51,7 +43,7 @@ function Provider(props) {
             <tr key={index}>
               <td>
                 <figure className="image is-16x16">
-                  <img src={act.actor_avator} />
+                  <img role="presentation" src={act.actor_avator} />
                 </figure>
               </td>
               <td>{act.actor_name}</td>
@@ -72,5 +64,10 @@ function Provider(props) {
     </div>
   );
 }
+
+Provider.propTypes = {
+  params: React.PropTypes.object,
+  providers: React.PropTypes.array,
+};
 
 export default Provider;
