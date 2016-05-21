@@ -3,20 +3,26 @@ import axios from 'axios';
 import _ from 'underscore';
 
 const helpers = {
+  // Utility to show objects in browser as React gets grumpy otherwise
   dump: (obj) => {
     return <pre>{JSON.stringify(obj, null, ' ')}</pre>;
   },
   capitalize: (string) => {
     return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
   },
+  // Get just the provider names.
   providersList: (ary) => {
-    // Get just the provider names.
     return _.pluck(ary, 'name');
   },
+  // Get all data for a specific provider
   singleProvider: (ary, name) => {
     const sp = _.where(ary, { name: name });
-    return _.chain(sp[0].activity).sortBy('activity_date').reverse().value();
+    return _.chain(sp[0].activity)
+      .sortBy('activity_date')
+      .reverse()
+      .value();
   },
+  // Get and rework data for chart.js Pie chart
   pieChartData: (ary) => {
     const res = [];
     ary.forEach((item) => {
@@ -31,6 +37,7 @@ const helpers = {
     });
     return res;
   },
+  // Get the totals of stats across all providers
   getProviderTotals: (ary) => {
     const sum = {
       likes: 0,
@@ -54,7 +61,8 @@ const helpers = {
     }
     return sum;
   },
-  getActivity: () => {
+  // Use axios to fetch all activity from server
+  getAllActivity: () => {
     return axios.get('https://nuvi-challenge.herokuapp.com/activities')
     .then((response) => {
       // Organize response by provider (ie, Twitter, Facebook, Instagram, etc)
@@ -72,7 +80,6 @@ const helpers = {
             sentiment: 0,
           },
         };
-
         _.each(item, (act) => {
           provider.stats.likes += act.activity_likes;
           provider.stats.shares += act.activity_shares;

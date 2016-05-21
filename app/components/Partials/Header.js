@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import Logo from '../../img/bull.svg';
 
 const Header = () => {
@@ -6,9 +8,9 @@ const Header = () => {
     <nav className="nav">
       <div className="container">
         <div className="nav-left">
-          <a className="nav-item logo" href="#">
+          <Link className="nav-item logo" to="/">
             <img alt="Logo" src={Logo} /><span>Monitaur</span>
-          </a>
+          </Link>
         </div>
 
         <span className="nav-toggle">

@@ -1,16 +1,21 @@
+// React specific
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
-import helpers from './utils/helpers';
+
+// Components
 import Dashboard from './components/Dashboard';
 import Provider from './components/Provider';
 import Header from './components/Partials/Header';
 import Nav from './components/Partials/Nav';
-import Loading from './img/grid.svg';
 
+// Misc
+import Loading from './img/grid.svg';
+import helpers from './utils/helpers';
 require('font-awesome-webpack');
 require('./styles/app.sass');
 
+// App
 class App extends Component {
 
   constructor(props) {
@@ -22,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    helpers.getActivity()
+    helpers.getAllActivity()
       .then((data) => {
         this.setState({
           isLoading: false,
@@ -56,10 +61,12 @@ class App extends Component {
   }
 }
 
+// Validations
 App.propTypes = {
   children: React.PropTypes.node,
 };
 
+// Router
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
