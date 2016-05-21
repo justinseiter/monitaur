@@ -1,7 +1,7 @@
 // React specific
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { browserHistory, Router, Route, IndexRoute } from 'react-router';
+import { hashHistory, Router, Route, IndexRoute } from 'react-router';
 
 // Components
 import Dashboard from './components/Dashboard';
@@ -68,11 +68,10 @@ App.propTypes = {
 
 // Router
 render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard} />
       <Route path="provider/:name" component={Provider} />
-      <Route path="*" component={Dashboard} />
     </Route>
   </Router>
 ), document.getElementById('app'));
