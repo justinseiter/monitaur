@@ -1,6 +1,18 @@
 import React from 'react';
 import numeral from 'numeral';
 
+function sentimentSmiley(num) {
+  let face = num;
+  if (face === 0) {
+    face = 'meh';
+  } else if (face > 0) {
+    face = 'smile';
+  } else {
+    face = 'frown';
+  }
+  return face;
+}
+
 function Scoreboard({ providers }) {
   return (
     <nav className="level scoreboard">
@@ -20,7 +32,7 @@ function Scoreboard({ providers }) {
         <p className="heading">Sentiment</p>
         <p className="title">
           <span className="icon is-medium">
-            <i className={`fa fa-${providers.sentiment}-o`}></i>
+            <i className={`fa fa-${sentimentSmiley(providers.sentiment)}-o`}></i>
           </span>
         </p>
       </div>

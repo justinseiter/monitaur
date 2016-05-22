@@ -24,14 +24,7 @@ const helpers = {
   },
   singleProviderScoreboard: (ary, name) => {
     const sp = _.where(ary, { name: name });
-    const stats = sp[0].stats
-    if (stats.sentiment === 0) {
-      stats.sentiment = 'meh';
-    } else if (stats.sentiment > 0) {
-      stats.sentiment = 'smile';
-    } else {
-      stats.sentiment = 'frown';
-    }
+    const stats = sp[0].stats;
     return stats;
   },
   // Get and rework data for chart.js Pie chart
@@ -42,7 +35,7 @@ const helpers = {
       instagram: '#abb0b7',
       tumblr: '#9ea3ab',
       facebook: '#90969f',
-    }
+    };
     ary.forEach((item) => {
       res.push(
         {
@@ -70,18 +63,12 @@ const helpers = {
       sum.shares += item.shares;
       sum.sentiment += item.sentiment;
     });
-    if (sum.sentiment === 0) {
-      sum.sentiment = 'meh';
-    } else if (sum.sentiment > 0) {
-      sum.sentiment = 'smile';
-    } else {
-      sum.sentiment = 'frown';
-    }
     return sum;
   },
   // Use axios to fetch all activity from server
   getAllActivity: () => {
-    return axios.get('https://gist.githubusercontent.com/justinseiter/cbe5733b69cacf0fd42ba2afae9f13a8/raw/c451a0bf17c991f4d0180e235f5d9d5a2332635e/monitaur.json')
+    // https://gist.githubusercontent.com/justinseiter/cbe5733b69cacf0fd42ba2afae9f13a8/raw/c451a0bf17c991f4d0180e235f5d9d5a2332635e/monitaur.json
+    return axios.get('https://nuvi-challenge.herokuapp.com/activities')
     .then((response) => {
       // Organize response by provider (ie, Twitter, Facebook, Instagram, etc)
       const byProvider = _.chain(response.data).groupBy('provider').value();
