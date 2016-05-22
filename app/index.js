@@ -39,15 +39,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div className="container">
+        <Nav providers={helpers.providersList(this.state.providers)} />
+        <div className="wrapper">
         {this.state.isLoading === true
         ? <p className="has-text-centered loading"><img alt="loading" src={Loading} /></p>
         :
-          <div className="columns animated fadeIn">
-            <Nav providers={helpers.providersList(this.state.providers)} />
+          <div className="columns animated fadeIn main">
             <div className="column">
-              <div className="box">
+              <div className="">
                 {this.props.children && React.cloneElement(this.props.children, {
                   providers: this.state.providers, isLoading: this.state.isLoading,
                 })}

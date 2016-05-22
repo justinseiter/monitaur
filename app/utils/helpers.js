@@ -31,17 +31,17 @@ const helpers = {
   pieChartData: (ary) => {
     const res = [];
     const providerColors = {
-      twitter: '#b9bdc2',
-      instagram: '#abb0b7',
-      tumblr: '#9ea3ab',
-      facebook: '#90969f',
+      twitter: '#ff9d88',
+      instagram: '#ff886e',
+      tumblr: '#ff7355',
+      facebook: '#ff5e3b',
     };
     ary.forEach((item) => {
       res.push(
         {
           value: item.activity.length,
           color: providerColors[item.name],
-          highlight: '#fdeea5',
+          highlight: '#FF5E3B',
           label: helpers.capitalize(item.name),
         }
       );
@@ -68,7 +68,8 @@ const helpers = {
   // Use axios to fetch all activity from server
   getAllActivity: () => {
     // https://gist.githubusercontent.com/justinseiter/cbe5733b69cacf0fd42ba2afae9f13a8/raw/c451a0bf17c991f4d0180e235f5d9d5a2332635e/monitaur.json
-    return axios.get('https://nuvi-challenge.herokuapp.com/activities')
+    // https://nuvi-challenge.herokuapp.com/activities
+    return axios.get('https://gist.githubusercontent.com/justinseiter/cbe5733b69cacf0fd42ba2afae9f13a8/raw/c451a0bf17c991f4d0180e235f5d9d5a2332635e/monitaur.json')
     .then((response) => {
       // Organize response by provider (ie, Twitter, Facebook, Instagram, etc)
       const byProvider = _.chain(response.data).groupBy('provider').value();

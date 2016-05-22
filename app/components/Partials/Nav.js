@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
+import Logo from '../../img/bull.svg';
+
 function Nav({ providers }) {
   return (
-    <div className="column is-narrow sidebar">
+    <div className="sidebar">
+      <div className="brand">
+        <Link className="logo" to="/">
+          <img alt="Logo" src={Logo} /><span>Monitaur</span>
+        </Link>
+      </div>
       <aside className="menu">
-        <p className="menu-label">
-          General
-        </p>
         <ul className="menu-list">
           <li>
             <IndexLink to="/" activeClassName="is-active">

@@ -8,12 +8,9 @@ function Provider(props) {
   const provScoreboard = helpers.singleProviderScoreboard(props.providers, props.params.name);
   return (
     <div className="Provider">
-      <div className="page-heading">
+      <div className="level page-heading">
         <p className="title is-3">
           {helpers.capitalize(props.params.name)}
-        </p>
-        <p className="subtitle is-5">
-          {helpers.capitalize(props.params.name)} Overview &amp; Stats
         </p>
       </div>
       <Scoreboard providers={provScoreboard} />

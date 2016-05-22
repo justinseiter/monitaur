@@ -8,9 +8,8 @@ function Dashboard(props) {
   const providersScoreboard = helpers.getProviderTotals(props.providers);
   return (
     <div>
-      <div className="page-heading">
+      <div className="level page-heading">
         <p className="title is-3">Dashboard</p>
-        <p className="subtitle is-5">An overview of activity across providers</p>
       </div>
       <Scoreboard providers={providersScoreboard} />
       <div className="columns">
@@ -18,7 +17,7 @@ function Dashboard(props) {
           <PolarArea data={helpers.pieChartData(props.providers)} redraw width="340" height="340" />
           <p className="has-text-centered">
             <br />
-            <span className="tag">Posts Per Provider</span>
+            <span className="tag is-dark">Posts Per Provider</span>
           </p>
         </div>
         <div className="column">
