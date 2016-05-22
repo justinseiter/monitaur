@@ -15,12 +15,24 @@ const helpers = {
     return _.pluck(ary, 'name');
   },
   // Get all data for a specific provider
-  singleProvider: (ary, name) => {
+  singleProviderActivity: (ary, name) => {
     const sp = _.where(ary, { name: name });
     return _.chain(sp[0].activity)
       .sortBy('activity_date')
       .reverse()
       .value();
+  },
+  singleProviderScoreboard: (ary, name) => {
+    const sp = _.where(ary, { name: name });
+    const stats = sp[0].stats
+    if (stats.sentiment === 0) {
+      stats.sentiment = 'meh';
+    } else if (stats.sentiment > 0) {
+      stats.sentiment = 'smile';
+    } else {
+      stats.sentiment = 'frown';
+    }
+    return stats;
   },
   // Get and rework data for chart.js Pie chart
   pieChartData: (ary) => {

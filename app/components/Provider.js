@@ -1,9 +1,11 @@
 import React from 'react';
+import Scoreboard from './Partials/Scoreboard';
 import helpers from '../utils/helpers';
 import moment from 'moment';
 
 function Provider(props) {
-  const prov = helpers.singleProvider(props.providers, props.params.name);
+  const prov = helpers.singleProviderActivity(props.providers, props.params.name);
+  const provScoreboard = helpers.singleProviderScoreboard(props.providers, props.params.name);
   return (
     <div className="Provider">
       <div className="page-heading">
@@ -14,6 +16,7 @@ function Provider(props) {
           {helpers.capitalize(props.params.name)} Overview &amp; Stats
         </p>
       </div>
+      <Scoreboard providers={provScoreboard} />
       <table className="table is-striped">
         <thead>
           <tr>
