@@ -34,12 +34,19 @@ function Nav({ providers }) {
           ))}
         </ul>
         <p className="menu-label">
-          Administration
+          Colophon
         </p>
         <ul className="menu-list general-menu">
-          <li><a href="#">Team Settings</a></li>
-          <li><a href="#">Invitations</a></li>
-          <li><a href="#">Authentication</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Tech Stack</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <p className="menu-label">
+          Utilities
+        </p>
+        <ul className="menu-list general-menu">
+          <li><a href="#">Refresh Data</a></li>
+          <li><a href="#">View JSON</a></li>
         </ul>
       </aside>
     </div>

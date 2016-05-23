@@ -31,17 +31,17 @@ const helpers = {
   pieChartData: (ary) => {
     const res = [];
     const providerColors = {
-      twitter: '#939bb0',
-      instagram: '#75809a',
-      tumblr: '#5d677f',
-      facebook: '#484f62',
+      twitter: 'rgba(255, 110, 59,0.3)',
+      instagram: 'rgba(255,59,106,0.3)',
+      tumblr: 'rgba(147,155,176,0.3)',
+      facebook: 'rgba(59, 204, 255,0.3)',
     };
     ary.forEach((item) => {
       res.push(
         {
           value: item.activity.length,
           color: providerColors[item.name],
-          highlight: '#ff6e3b',
+          highlight: 'rgba( 61, 67, 83, 0.6)',
           label: helpers.capitalize(item.name),
         }
       );

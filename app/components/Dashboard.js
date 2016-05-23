@@ -2,7 +2,63 @@ import React from 'react';
 import { Link } from 'react-router';
 import Scoreboard from './Partials/Scoreboard';
 import helpers from '../utils/helpers';
-import { PolarArea } from 'react-chartjs';
+import { PolarArea, Radar } from 'react-chartjs';
+
+function rand(min, max, num) {
+          var rtn = [];
+          while (rtn.length < num) {
+            rtn.push(Math.floor((Math.random() * (max - min)) + min));
+          }
+          return rtn;
+        }
+
+function data2() {
+          return {
+            labels: ["Posts", "Likes", "Shares", "Comments", "Sentiment"],
+            datasets: [
+                {
+                    label: "Twitter",
+                    fillColor: "rgba(255,59,106,0.2)",
+                    strokeColor: "rgba(255,59,106,0.5)",
+                    pointColor: "rgba(255,59,106,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: rand(32, 100, 5)
+                },
+                {
+                    label: "Instagram",
+                    fillColor: "rgba(147,155,176,0.2)",
+                    strokeColor: "rgba(147,155,176,0.5)",
+                    pointColor: "rgba(147,155,176,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: rand(32, 100, 5)
+                },
+                {
+                    label: "Tumblr",
+                    fillColor: "rgba(255, 110, 59,0.2)",
+                    strokeColor: "rgba(255, 110, 59,0.5)",
+                    pointColor: "rgba(255, 110, 59,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: rand(32, 100, 5)
+                },
+                {
+                    label: "Facebook",
+                    fillColor: "rgba(59, 204, 255,0.2)",
+                    strokeColor: "rgba(59, 204, 255,0.5)",
+                    pointColor: "rgba(59, 204, 255,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: rand(32, 100, 5)
+                }
+            ]
+          };
+        }
 
 function Dashboard(props) {
   const providersScoreboard = helpers.getProviderTotals(props.providers);
@@ -16,14 +72,39 @@ function Dashboard(props) {
       <br />
       <div className="columns">
         <div className="column is-narrow">
-          <PolarArea data={helpers.pieChartData(props.providers)} redraw width="380" height="380" />
-          <p className="has-text-centered">
-            <br />
-            <span className="tag is-dark">Posts Per Provider</span>
-          </p>
+          <div className="card is-fullwidth">
+            <header className="card-header">
+              <p className="card-header-title">
+                Activity Analysis
+              </p>
+              <a className="card-header-icon">
+                <i className="fa fa-angle-up"></i>
+              </a>
+            </header>
+            <div className="card-content">
+              <div className="content">
+                <Radar data={data2()} redraw width="400" height="400" />
+              </div>
+            </div>
+          </div>
+          <div className="card is-fullwidth">
+            <header className="card-header">
+              <p className="card-header-title">
+                Posts Per Provider
+              </p>
+              <a className="card-header-icon">
+                <i className="fa fa-angle-up"></i>
+              </a>
+            </header>
+            <div className="card-content">
+              <div className="content">
+                <PolarArea data={helpers.pieChartData(props.providers)} redraw width="380" height="380" />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="column">
-          <h3 className="title is-5">Provider Breakdown</h3>
+          <h3 className="title is-4 ">Provider Breakdown</h3>
           <table className="table breakdown">
             <thead>
               <tr>

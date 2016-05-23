@@ -8,6 +8,7 @@ $family-primary: $family-sans
 $primary: #3bccff
 $brand: #ff6e3b
 $text: #3D4353
+$border: #ededed
 
 // Import CSS framework
 // http://bulma.io
@@ -34,6 +35,8 @@ html, body
     top: 2px
   .attachment
     border: 1px solid $border
+  td .fa
+    opacity: 0.8
 
 table.breakdown
   th, td 
@@ -74,6 +77,9 @@ table.breakdown
   .level-item
     opacity: 0.8
 
+.card-header
+  background-color: $grey-lighter
+
 .page-heading
   margin-bottom: 1em
   background-color: #fff
@@ -93,8 +99,8 @@ table.breakdown
   a
     text-transform: capitalize
     color: $grey
-    padding-top: 8px
-    padding-bottom: 8px
+    // padding-top: 8px
+    // padding-bottom: 8px
     &:hover
       color: #ff6e4f
       background-color: transparent
