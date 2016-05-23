@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 import _ from 'underscore';
 
@@ -26,27 +25,6 @@ const helpers = {
     const sp = _.where(ary, { name: name });
     const stats = sp[0].stats;
     return stats;
-  },
-  // Get and rework data for chart.js Pie chart
-  pieChartData: (ary) => {
-    const res = [];
-    const providerColors = {
-      twitter: 'rgba(255, 110, 59,0.3)',
-      instagram: 'rgba(255,59,106,0.3)',
-      tumblr: 'rgba(147,155,176,0.3)',
-      facebook: 'rgba(59, 204, 255,0.3)',
-    };
-    ary.forEach((item) => {
-      res.push(
-        {
-          value: item.activity.length,
-          color: providerColors[item.name],
-          highlight: 'rgba( 61, 67, 83, 0.6)',
-          label: helpers.capitalize(item.name),
-        }
-      );
-    });
-    return res;
   },
   // Get the totals of stats across all providers
   getProviderTotals: (ary) => {
