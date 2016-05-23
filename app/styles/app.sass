@@ -5,6 +5,9 @@
 // Override Bulma vars BEFORE loading bulma
 $family-sans: 'Roboto', Helvetica, Arial, sans-serif
 $family-primary: $family-sans
+$primary: #3bccff
+$brand: #ff6e3b
+$text: #3D4353
 
 // Import CSS framework
 // http://bulma.io
@@ -12,6 +15,9 @@ $family-primary: $family-sans
 @import "animate.css"
 
 // Site styles
+html, body
+  background-color: #fff
+
 .loading 
   width: 50px;
   height: 50px;
@@ -39,7 +45,7 @@ table.breakdown
 
 .brand
   height: 80px
-  background-color: #FF5E3B
+  background-color: $brand
   padding-top: 15px
 
 .sidebar 
@@ -54,22 +60,24 @@ table.breakdown
   margin-left: 240px
 
 .main
-  padding: 100px 30px 30px
+  padding: 80px 30px 30px
 
 .nav
   margin-bottom: 2em
   border-bottom: 1px solid $border
 
 .scoreboard
-  margin: 0 -30px 3em !important
-  padding-bottom: 1em
+  margin: 0 -30px 0em !important
+  padding: 1em 0
   border-bottom: 1px solid $border
   background-color: $grey-lighter
+  .level-item
+    opacity: 0.8
 
 .page-heading
   margin-bottom: 1em
   background-color: #fff
-  // border-bottom: 1px solid $border
+  border-bottom: 1px solid $border
   height: 80px
   padding: 13px 30px
   width: 100%

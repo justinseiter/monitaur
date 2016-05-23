@@ -14,7 +14,7 @@ function Provider(props) {
         </p>
       </div>
       <Scoreboard providers={provScoreboard} />
-      <table className="table is-striped">
+      <table className="table">
         <thead>
           <tr>
             <th></th>
@@ -56,7 +56,7 @@ function Provider(props) {
                   : <span>{act.activity_message}</span>
                 }
               </td>
-              <td className="date">{moment(act.activity_date).format('MMM Do')}</td>
+              <td className="date">{moment(act.activity_date).format('MMM Do, YYYY')}</td>
               <td className="has-text-right">{act.activity_likes}</td>
               <td className="has-text-right">{act.activity_shares}</td>
               <td className="has-text-right">{act.activity_comments}</td>

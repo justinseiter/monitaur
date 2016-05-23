@@ -23,7 +23,7 @@ function Nav({ providers }) {
         <p className="menu-label">
           Providers
         </p>
-        <ul className="menu-list">
+        <ul className="menu-list provider-menu">
           {providers.map((provider, index) => (
             <li key={index}>
               <Link activeClassName="is-active" to={`/provider/${provider}`}>
@@ -36,7 +36,7 @@ function Nav({ providers }) {
         <p className="menu-label">
           Administration
         </p>
-        <ul className="menu-list">
+        <ul className="menu-list general-menu">
           <li><a href="#">Team Settings</a></li>
           <li><a href="#">Invitations</a></li>
           <li><a href="#">Authentication</a></li>

@@ -17,16 +17,12 @@ function Scoreboard({ providers }) {
   return (
     <nav className="level scoreboard">
       <div className="level-item has-text-centered">
+        <p className="heading">Posts</p>
+        <p className="title">{numeral(providers.posts).format('0,0')}</p>
+      </div>
+      <div className="level-item has-text-centered">
         <p className="heading">Likes</p>
         <p className="title">{numeral(providers.likes).format('0,0')}</p>
-      </div>
-      <div className="level-item has-text-centered">
-        <p className="heading">Shares</p>
-        <p className="title">{numeral(providers.shares).format('0,0')}</p>
-      </div>
-      <div className="level-item has-text-centered">
-        <p className="heading">Comments</p>
-        <p className="title">{numeral(providers.comments).format('0,0')}</p>
       </div>
       <div className="level-item has-text-centered">
         <p className="heading">Sentiment</p>
@@ -35,6 +31,14 @@ function Scoreboard({ providers }) {
             <i className={`fa fa-${sentimentSmiley(providers.sentiment)}-o`}></i>
           </span>
         </p>
+      </div>
+      <div className="level-item has-text-centered">
+        <p className="heading">Shares</p>
+        <p className="title">{numeral(providers.shares).format('0,0')}</p>
+      </div>
+      <div className="level-item has-text-centered">
+        <p className="heading">Comments</p>
+        <p className="title">{numeral(providers.comments).format('0,0')}</p>
       </div>
     </nav>
   );

@@ -12,9 +12,11 @@ function Dashboard(props) {
         <p className="title is-3">Dashboard</p>
       </div>
       <Scoreboard providers={providersScoreboard} />
+      <br />
+      <br />
       <div className="columns">
         <div className="column is-narrow">
-          <PolarArea data={helpers.pieChartData(props.providers)} redraw width="340" height="340" />
+          <PolarArea data={helpers.pieChartData(props.providers)} redraw width="380" height="380" />
           <p className="has-text-centered">
             <br />
             <span className="tag is-dark">Posts Per Provider</span>
