@@ -53,14 +53,14 @@ function Dashboard(props) {
             <h3 className="title is-4 section-head">Provider Breakdown</h3>
             <article className="media provider-break-card">
               <figure className="media-left">
-                <span className="icon is-medium">
+                <span className="icon">
                   <i className="fa fa-instagram"></i>
                 </span>
               </figure>
               <div className="media-content">
                 <div className="content">
+                  <h4 className="title is-5">Instagram</h4>
                   <p>
-                    <h4 className="title is-5">Instagram</h4>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                   </p>
                 </div>
@@ -68,14 +68,14 @@ function Dashboard(props) {
             </article>
             <article className="media provider-break-card">
               <figure className="media-left">
-                <span className="icon is-medium">
+                <span className="icon">
                   <i className="fa fa-facebook"></i>
                 </span>
               </figure>
               <div className="media-content">
                 <div className="content">
+                  <h4 className="title is-5">Facebook</h4>
                   <p>
-                    <h4 className="title is-5">Facebook</h4>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                   </p>
                 </div>
@@ -83,14 +83,14 @@ function Dashboard(props) {
             </article>
             <article className="media provider-break-card">
               <figure className="media-left">
-                <span className="icon is-medium">
+                <span className="icon">
                   <i className="fa fa-twitter"></i>
                 </span>
               </figure>
               <div className="media-content">
                 <div className="content">
+                  <h4 className="title is-5">Twitter</h4>
                   <p>
-                    <h4 className="title is-5">Twitter</h4>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                   </p>
                 </div>
@@ -98,14 +98,14 @@ function Dashboard(props) {
             </article>
             <article className="media provider-break-card">
               <figure className="media-left">
-                <span className="icon is-medium">
+                <span className="icon">
                   <i className="fa fa-tumblr"></i>
                 </span>
               </figure>
               <div className="media-content">
                 <div className="content">
+                  <h4 className="title is-5">Tumblr</h4>
                   <p>
-                    <h4 className="title is-5">Tumblr</h4>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                   </p>
                 </div>

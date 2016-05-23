@@ -17,7 +17,6 @@ const charts = {
       datasets: [],
     };
     ary.forEach(item => {
-      console.log(item.stats)
       chartData.datasets.push({
         label: helpers.capitalize(item.name),
         fillColor: getProviderColor(item.name, 0.1),
@@ -35,7 +34,6 @@ const charts = {
         ],
       });
     });
-    console.log(chartData)
     return chartData;
   },
   // Get and rework data for chart.js Pie chart
