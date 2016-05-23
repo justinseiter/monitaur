@@ -20,21 +20,6 @@ function Dashboard(props) {
           <div className="card is-fullwidth">
             <header className="card-header">
               <p className="card-header-title">
-                Activity Analysis
-              </p>
-              <a className="card-header-icon">
-                <i className="fa fa-angle-up"></i>
-              </a>
-            </header>
-            <div className="card-content">
-              <div className="content">
-                <Radar data={charts.radarChartData(props.providers)} redraw width="400" height="400" />
-              </div>
-            </div>
-          </div>
-          <div className="card is-fullwidth">
-            <header className="card-header">
-              <p className="card-header-title">
                 Posts Per Provider
               </p>
               <a className="card-header-icon">
@@ -47,55 +32,86 @@ function Dashboard(props) {
               </div>
             </div>
           </div>
+          <div className="card is-fullwidth">
+            <header className="card-header">
+              <p className="card-header-title">
+                Activity Analysis
+              </p>
+              <a className="card-header-icon">
+                <i className="fa fa-angle-up"></i>
+              </a>
+            </header>
+            <div className="card-content">
+              <div className="content">
+                <Radar data={charts.radarChartData(props.providers)} redraw width="370" height="370" />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="column">
-          <h3 className="title is-4 ">Provider Breakdown</h3>
-          <table className="table breakdown">
-            <thead>
-              <tr>
-                <th></th>
-                <th className="name">Provider</th>
-                <th>Posts</th>
-                <th>Likes</th>
-                <th>Shares</th>
-                <th>Comments</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span className="icon is-small"><i className="fa fa-facebook"></i></span></td>
-                <td className="name"><Link to="/provider/facebook">Facebook</Link></td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-              </tr>
-              <tr>
-                <td><span className="icon is-small"><i className="fa fa-twitter"></i></span></td>
-                <td className="name">Twitter</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-              </tr>
-              <tr>
-                <td><span className="icon is-small"><i className="fa fa-instagram"></i></span></td>
-                <td className="name">Instagram</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-              </tr>
-              <tr>
-                <td><span className="icon is-small"><i className="fa fa-tumblr"></i></span></td>
-                <td className="name">Tumblr</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-                <td>23</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="dashboard-content">
+            <h3 className="title is-4 section-head">Provider Breakdown</h3>
+            <article className="media provider-break-card">
+              <figure className="media-left">
+                <span className="icon is-medium">
+                  <i className="fa fa-instagram"></i>
+                </span>
+              </figure>
+              <div className="media-content">
+                <div className="content">
+                  <p>
+                    <h4 className="title is-5">Instagram</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article className="media provider-break-card">
+              <figure className="media-left">
+                <span className="icon is-medium">
+                  <i className="fa fa-facebook"></i>
+                </span>
+              </figure>
+              <div className="media-content">
+                <div className="content">
+                  <p>
+                    <h4 className="title is-5">Facebook</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article className="media provider-break-card">
+              <figure className="media-left">
+                <span className="icon is-medium">
+                  <i className="fa fa-twitter"></i>
+                </span>
+              </figure>
+              <div className="media-content">
+                <div className="content">
+                  <p>
+                    <h4 className="title is-5">Twitter</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article className="media provider-break-card">
+              <figure className="media-left">
+                <span className="icon is-medium">
+                  <i className="fa fa-tumblr"></i>
+                </span>
+              </figure>
+              <div className="media-content">
+                <div className="content">
+                  <p>
+                    <h4 className="title is-5">Tumblr</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>

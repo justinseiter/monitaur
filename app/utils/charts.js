@@ -13,7 +13,7 @@ const getProviderColor = (provider, opacity) => {
 const charts = {
   radarChartData: (ary) => {
     const chartData = {
-      labels: ['Posts', 'Likes', 'Shares', 'Comments'],
+      labels: ['Likes', 'Shares', 'Sentiment', 'Posts', 'Comments'],
       datasets: [],
     };
     ary.forEach(item => {
@@ -27,9 +27,10 @@ const charts = {
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(151,187,205,1)',
         data: [
-          item.stats.posts,
           item.stats.likes,
           item.stats.shares,
+          item.stats.sentiment,
+          item.stats.posts,
           item.stats.comments,
         ],
       });
