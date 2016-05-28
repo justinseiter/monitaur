@@ -4,7 +4,7 @@
 > activity.
 > [monitaur.xyz](http://monitaur.xyz)
 
-![Monitaur screenshot](http://monitaur.xyz/monitaur-screenshot2.png)
+![Monitaur screenshot](http://monitaur.xyz/monitaur-screenshot.png)
 
 ##Tech
  - React
