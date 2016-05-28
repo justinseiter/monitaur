@@ -1,10 +1,10 @@
 #Monitaur
 
-> Monitaur is a React/Webpack demo app for pulling/parsing social media
+> [WIP] Monitaur is a React/Webpack demo app for pulling/parsing social media
 > activity.
 > [monitaur.xyz](http://monitaur.xyz)
 
-![Monitaur screenshot](http://monitaur.xyz/monitaur-screenshot.png)
+![Monitaur screenshot](http://monitaur.xyz/monitaurxyz-screenshot.png)
 
 ##Tech
  - React
