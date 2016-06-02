@@ -7,6 +7,7 @@
 ![Monitaur screenshot](http://monitaur.xyz/monitaurxyz-screenshot.png)
 
 ##Tech
+[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/justinseiter/monitaur)
  - React
  - Webpack
  - Axios
